@@ -4,6 +4,18 @@ Aplicación móvil construida con **Expo SDK 57**, **React Native 0.86**, **Type
 
 ---
 
+## Credenciales de Prueba y URLs de Producción
+
+- **API y Sitio Web en Producción (Vercel)**: [https://library-api-guia1.vercel.app](https://library-api-guia1.vercel.app)
+- **Documentación Interactiva (Swagger UI)**: [https://library-api-guia1.vercel.app/api/docs](https://library-api-guia1.vercel.app/api/docs)
+
+| Rol | Correo | Contraseña |
+| :--- | :--- | :--- |
+| **Estudiante (`student`)** | `estudiante@biblioteca.edu.co` | `Estudiante123` |
+| **Bibliotecario (`librarian`)** | `bibliotecario@biblioteca.edu.co` | `Bibliotecario123` |
+
+---
+
 ## 1. Cómo ejecutar y verificar el proyecto
 
 ### 1.1 Levantar la API (`library_api`)
@@ -14,11 +26,12 @@ pnpm dev:lan
 ```
 
 ### 1.2 Configurar variables de entorno en `library_app`
-El archivo `.env` ya está configurado con la IP Wi-Fi local detectada en tu equipo (`192.168.1.5`):
+El archivo `.env` puede apuntar al servidor desplegado en Vercel o a la IP Wi-Fi local de tu equipo (`192.168.1.5`):
 ```env
-EXPO_PUBLIC_API_URL=http://192.168.1.5:3000
+EXPO_PUBLIC_API_URL=https://library-api-guia1.vercel.app
 ```
-- **Teléfono físico (Expo Go)**: Usa la IP local de tu PC en la misma red Wi-Fi (`http://192.168.1.5:3000` o `http://192.168.1.4:3000` por Ethernet).
+- **Producción (Vercel)**: `https://library-api-guia1.vercel.app`
+- **Teléfono físico en red local (Expo Go)**: `http://192.168.1.5:3000` (o `http://192.168.1.4:3000` por Ethernet).
 - **Emulador de Android**: `http://10.0.2.2:3000`
 - **Simulador de iOS**: `http://localhost:3000`
 
@@ -36,11 +49,11 @@ npx expo export
 ```
 
 ### 1.5 Ejecutar la prueba E2E real contra `library_api`
-Con `library_api` encendida en `http://localhost:3000`:
+Con `library_api` encendida en `http://localhost:3000` (o apuntando a Vercel):
 ```bash
-E2E_API_URL=http://localhost:3000 \
-E2E_STUDENT_EMAIL=estudiante@tucorreo.com E2E_STUDENT_PASSWORD=TuClaveEstudiante \
-E2E_LIBRARIAN_EMAIL=bibliotecario@tucorreo.com E2E_LIBRARIAN_PASSWORD=TuClaveBibliotecario \
+E2E_API_URL=https://library-api-guia1.vercel.app \
+E2E_STUDENT_EMAIL=estudiante@biblioteca.edu.co E2E_STUDENT_PASSWORD=Estudiante123 \
+E2E_LIBRARIAN_EMAIL=bibliotecario@biblioteca.edu.co E2E_LIBRARIAN_PASSWORD=Bibliotecario123 \
 npx jest e2e-api
 ```
 
